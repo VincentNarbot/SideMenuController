@@ -20,6 +20,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
+
 import UIKit
 
 public protocol SideMenuControllerDelegate: class {
@@ -28,12 +29,13 @@ public protocol SideMenuControllerDelegate: class {
 }
 
 // MARK: - Public methods -
+
 public extension SideMenuController {
     
     /**
      Toggles the side pannel visible or not.
      */
-    public func toggle() {
+    @objc public func toggle() {
         
         if !transitionInProgress {
             if !sidePanelVisible {
@@ -74,7 +76,7 @@ public extension SideMenuController {
             
             addChild(sideViewController)
             sideViewController.didMove(toParent: self)
-            
+
             self.view.backgroundColor = sideViewController.view.backgroundColor
             
             sidePanel.isHidden = true
@@ -140,7 +142,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: Public
     
     open weak var delegate: SideMenuControllerDelegate?
-    open static var preferences: Preferences = Preferences()
+    public static var preferences: Preferences = Preferences()
     internal(set) open var sidePanelVisible = false
     
     // MARK: Internal
@@ -356,7 +358,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         statusBarUnderlay.alpha = alpha
     }
     
-    func handleTap() {
+    @objc func handleTap() {
         animate(toReveal: false)
     }
     
