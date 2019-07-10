@@ -20,7 +20,6 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-
 import UIKit
 
 public protocol SideMenuControllerDelegate: class {
@@ -29,7 +28,6 @@ public protocol SideMenuControllerDelegate: class {
 }
 
 // MARK: - Public methods -
-
 public extension SideMenuController {
     
     /**
@@ -76,6 +74,8 @@ public extension SideMenuController {
             
             addChildViewController(sideViewController)
             sideViewController.didMove(toParentViewController: self)
+            
+            self.view.backgroundColor = sideViewController.view.backgroundColor
             
             sidePanel.isHidden = true
         }
@@ -213,7 +213,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Configurations -
     
-    func repositionViews() {
+    public func repositionViews() {
         
         if sidePanelVisible {
             toggle()
